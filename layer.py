@@ -141,8 +141,8 @@ class softmax_with_cross_entropy_error():
         return (self.y - self.t) / self.y.shape[0] # divided by batch_size
     
     def softmax(self, X):
-        X_exp = np.exp(X - np.max(X)) # prevent overflow
-        return X_exp / np.sum(X_exp)
+        X_exp = np.exp(X - np.max(X, axis=1, keepdims=True)) # prevent overflow
+        return X_exp / np.sum(X_exp, axis=1, keepdims=True)
         
     def cross_entropy_error(self, y, t):
         if y.ndim == 1: # treat batch_size 1

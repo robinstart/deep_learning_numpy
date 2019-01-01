@@ -7,7 +7,7 @@ class sigmoid():
         
     def forward(self, X):
         out = 1 / (1 + np.exp(-X))
-        self.out = out # if return self.out it can be change or remove
+        self.out = out 
         return self.out
     
     def backward(self, dout):
